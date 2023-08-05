@@ -23,3 +23,24 @@ btnReg.addEventListener('click', async () => {
     console.log(response.status);
     console.log(await response.json());
 })
+
+const btnAuth = document.querySelector('.btn-auth');
+const inpEmailAuth = document.querySelector('.E-mail-inp-auth');
+const inpPasswordAuth = document.querySelector('.Password-inp-auth');
+
+btnAuth.addEventListener('click', async () => {
+    const objectToServer = {
+        email: inpEmailAuth.value,
+        pwd: inpPasswordAuth.value,
+    }
+
+    const response = await fetch('http://localhost:3000/api/authorize', {
+        method: 'POST',
+        body: JSON.stringify(objectToServer),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log(response.status);
+    console.log(await response.json());
+})
